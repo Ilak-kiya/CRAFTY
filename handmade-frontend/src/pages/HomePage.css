@@ -1,0 +1,170 @@
+/* ── HomePage ── */
+.homepage { padding-top: 68px; }
+
+/* Sections */
+.hp-section {
+  padding: 80px 0;
+  background: var(--cream);
+}
+.hp-section__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Product grid */
+.hp-products__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Banner CTA */
+.hp-banner {
+  background: linear-gradient(135deg, var(--forest) 0%, #163d2e 100%);
+  padding: 0;
+  overflow: hidden;
+}
+.hp-banner__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 420px;
+}
+.hp-banner__text {
+  padding: 64px 48px 64px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.hp-banner__eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--terra);
+  background: rgba(201,106,74,0.12);
+  padding: 5px 14px;
+  border-radius: 50px;
+  width: fit-content;
+}
+.hp-banner__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+}
+.hp-banner__sub {
+  font-size: 0.95rem;
+  color: rgba(248,243,233,0.75);
+  max-width: 380px;
+  line-height: 1.7;
+}
+.hp-banner__img-wrap {
+  height: 420px;
+  overflow: hidden;
+}
+.hp-banner__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.hp-banner:hover .hp-banner__img { transform: scale(1.03); }
+
+/* Artisans */
+.hp-artisans {
+  padding: 80px 0;
+  background: var(--cream-dk);
+}
+.hp-artisans__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.artisan-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(216,195,165,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.artisan-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.artisan-card__avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--beige);
+}
+.artisan-card__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+.artisan-card__craft {
+  font-size: 0.82rem;
+  color: var(--terra);
+  font-weight: 500;
+}
+.artisan-card__meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+.artisan-card__btn { font-size: 0.8rem; padding: 8px 20px; }
+
+/* Track Order strip */
+.hp-track-strip {
+  background: linear-gradient(90deg, var(--cream-dk) 0%, var(--beige-lt) 100%);
+  border-top: 1px solid var(--beige);
+  border-bottom: 1px solid var(--beige);
+  padding: 24px 0;
+}
+.hp-track-strip__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hp-track-strip__left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.hp-track-strip__icon { font-size: 2.2rem; }
+.hp-track-strip__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 3px;
+}
+.hp-track-strip__sub { font-size: 0.82rem; color: var(--gray); }
+.hp-track-strip__btn { white-space: nowrap; }
+
+/* Responsive */
+@media (max-width: 1100px) { .hp-products__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 800px)  {
+  .hp-products__grid { grid-template-columns: repeat(2, 1fr); }
+  .hp-artisans__grid { grid-template-columns: 1fr 1fr; }
+  .hp-banner__inner  { grid-template-columns: 1fr; }
+  .hp-banner__img-wrap { display: none; }
+  .hp-banner__text   { padding: 48px 0; }
+}
+@media (max-width: 500px)  {
+  .hp-products__grid { grid-template-columns: 1fr; }
+  .hp-artisans__grid { grid-template-columns: 1fr; }
+}

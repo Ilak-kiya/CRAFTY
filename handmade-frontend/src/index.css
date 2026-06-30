@@ -1,0 +1,182 @@
+/* ============================================================
+   GLOBAL STYLES — Crafty Handmade Marketplace
+   ============================================================ */
+
+:root {
+  --forest:    #1F4D3A;
+  --forest-lt: #2a6b50;
+  --cream:     #F8F3E9;
+  --cream-dk:  #EDE5D0;
+  --terra:     #C96A4A;
+  --terra-lt:  #d97f62;
+  --beige:     #D8C3A5;
+  --beige-lt:  #e8d8c0;
+  --charcoal:  #2B2B2B;
+  --gray:      #6B6B6B;
+  --gray-lt:   #9B9B9B;
+  --white:     #ffffff;
+  --shadow-sm: 0 2px 8px rgba(43,43,43,0.08);
+  --shadow-md: 0 4px 20px rgba(43,43,43,0.12);
+  --shadow-lg: 0 8px 40px rgba(43,43,43,0.16);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --transition:   all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: var(--font-body); border: none; outline: none; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-dk); }
+::-webkit-scrollbar-thumb { background: var(--beige); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--terra); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201,106,74,0.4); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 10px rgba(201,106,74,0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201,106,74,0); }
+}
+
+.fade-up  { animation: fadeUp 0.55s ease forwards; }
+.fade-in  { animation: fadeIn 0.4s ease forwards; }
+
+/* ── Skeleton loader ── */
+.skeleton {
+  background: linear-gradient(90deg, var(--cream-dk) 25%, var(--beige-lt) 50%, var(--cream-dk) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Layout helpers ── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.section-sub {
+  font-size: 0.95rem;
+  color: var(--gray);
+  margin-bottom: 36px;
+}
+.btn-primary {
+  background: var(--terra);
+  color: var(--white);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover {
+  background: var(--terra-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,106,74,0.35);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--forest);
+  border: 2px solid var(--forest);
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-outline:hover {
+  background: var(--forest);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.badge {
+  background: var(--terra);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ── Star rating ── */
+.stars { color: #F5A623; font-size: 0.85rem; letter-spacing: 1px; }
+.stars span { color: var(--gray-lt); }
+
+/* ── Toast ── */
+.toast-wrap {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.toast {
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-lg);
+  animation: fadeUp 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toast.success { border-left: 3px solid #4caf50; }
+.toast.error   { border-left: 3px solid var(--terra); }
